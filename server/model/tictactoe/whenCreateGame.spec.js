@@ -27,4 +27,26 @@ describe('create game command', () => {
 
         JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
     });
+
+    it('should create game with another user and timeStamp', () => {
+        given = [];
+        when = {
+            id: '1234',
+            comm: CREATEGAME,
+            userName: 'Benni',
+            name: 'FirstTTT',
+            timeStamp: '2015-12-03T15:13:00.291Z'
+        };
+        then = [{
+            id: '1234',
+            event: 'GameCreated',
+            userName: 'Benni',
+            timeStamp: '2015-12-03T15:13:00.291Z'
+        }];
+
+        const actualEvents = tttCommandHandler(given).executeCommand(when);
+
+        JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
+
 });
