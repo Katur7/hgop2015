@@ -1,5 +1,5 @@
 'use strict';
-let gameCreatedEvent = {};
+let gameCreatedEvent = [];
 
 const executeCommand = (cmd) => {
     switch (cmd.comm) {
@@ -12,7 +12,14 @@ const executeCommand = (cmd) => {
             }];
 
         case 'JoinGame':
-            break;
+        console.log(gameCreatedEvent);
+            return [{
+                id: cmd.id,
+                event: 'GameJoined',
+                userName: cmd.userName,
+                otherUserName: gameCreatedEvent[0].userName,
+                timeStamp: cmd.timeStamp
+            }];
 
         default:
             return 'No handler found';

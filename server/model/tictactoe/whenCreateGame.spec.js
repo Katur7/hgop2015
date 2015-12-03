@@ -3,6 +3,7 @@ const tttCommandHandler = require('./tictactoeCommandHandler');
 
 const CREATEGAME    = 'CreateGame';
 const USER1         = 'Grimur';
+const USER2         = 'Benni';
 
 describe('create game command', () => {
     let given, when, then;
@@ -33,14 +34,14 @@ describe('create game command', () => {
         when = {
             id: '1234',
             comm: CREATEGAME,
-            userName: 'Benni',
+            userName: USER2,
             name: 'FirstTTT',
             timeStamp: '2015-12-03T15:13:00.291Z'
         };
         then = [{
             id: '1234',
             event: 'GameCreated',
-            userName: 'Benni',
+            userName: USER2,
             timeStamp: '2015-12-03T15:13:00.291Z'
         }];
 
