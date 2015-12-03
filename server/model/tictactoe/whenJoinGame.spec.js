@@ -32,5 +32,25 @@ describe('join game command', () => {
         const actualEvents = tttCommandHandler(given).executeCommand(when);
 
         JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
+
+    it('should not join game if it does not exist', () => {
+        given = [];
+        when = {
+            id: '1235',
+            comm: 'JoinGame',
+            userName: USER2,
+            name: 'FirstTTT',
+            timeStamp: '2015-12-03T15:13:01.291Z'
+        };
+        then = [{
+            id: '1235',
+            event: 'GameDoesNotExist',
+            userName: USER2,
+            timeStamp: '2015-12-03T15:13:01.291Z'
+        }];
+        const actualEvents = tttCommandHandler(given).executeCommand(when);
+
+        JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
     })
 })

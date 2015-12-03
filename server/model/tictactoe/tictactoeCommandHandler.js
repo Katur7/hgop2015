@@ -12,7 +12,14 @@ const executeCommand = (cmd) => {
             }];
 
         case 'JoinGame':
-        console.log(gameCreatedEvent);
+            if(gameCreatedEvent[0] === undefined) {
+                return [{
+                    id: cmd.id,
+                    event: 'GameDoesNotExist',
+                    userName: cmd.userName,
+                    timeStamp: cmd.timeStamp
+                }];
+            }
             return [{
                 id: cmd.id,
                 event: 'GameJoined',
