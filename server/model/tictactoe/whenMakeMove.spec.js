@@ -52,4 +52,42 @@ describe('make move command', () => {
 
         JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
     });
+
+    describe('after one move', () => {
+        beforeEach(() => {
+            given.push({
+                id: '125',
+                event: 'MoveMade',
+                userName: USER1,
+                name: GAME_NAME,
+                x: 0,
+                y: 0,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:02.291Z'
+            });
+        });
+
+        it('should make another move', () => {
+            when = {
+                id: '126',
+                comm: MAKE_MOVE,
+                userName: USER2,
+                x: 1,
+                y: 0,
+                side: 'Y',
+                timeStamp: '2015-12-03T15:13:03.291Z'
+            };
+
+            then = [{
+                id: '126',
+                event: 'MoveMade',
+                userName: USER2,
+                name: GAME_NAME,
+                x: 1,
+                y: 0,
+                side: 'Y',
+                timeStamp: '2015-12-03T15:13:03.291Z'
+            }];
+        });
+    })
 })
