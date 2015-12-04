@@ -89,5 +89,24 @@ describe('make move command', () => {
                 timeStamp: '2015-12-03T15:13:03.291Z'
             }];
         });
+
+        it('should forbid making moves in occupied places', () => {
+            when = {
+                id: '126',
+                comm: MAKE_MOVE,
+                userName: USER2,
+                x: 0,
+                y: 0,
+                side: 'Y',
+                timeStamp: '2015-12-03T15:13:03.291Z'
+            };
+
+            then = [{
+                id: '126',
+                event: 'IllegalMove',
+                userName: USER2,
+                timeStamp: '2015-12-03T15:13:03.291Z'
+            }];
+        })
     })
 })
