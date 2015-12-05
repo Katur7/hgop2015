@@ -222,5 +222,48 @@ describe('make move command', () => {
             JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
         });
 
+        it('in a diagonal line', () => {
+            /*
+            X O -
+            O X -
+            - - -
+            */
+            given.push(constructMoveEvent(5, USER1, 0, 0));
+            given.push(constructMoveEvent(6, USER2, 1, 0));
+            given.push(constructMoveEvent(7, USER1, 1, 1));
+            given.push(constructMoveEvent(8, USER2, 0, 1));
+
+            when = {
+                id: '129',
+                comm: MAKE_MOVE,
+                userName: USER1,
+                x: 2,
+                y: 2,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:09.291Z'
+            };
+
+            then = [{
+                id: '129',
+                event: 'MoveMade',
+                userName: USER1,
+                name: GAME_NAME,
+                x: 2,
+                y: 2,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:09.291Z'
+            }, {
+                id: '129',
+                event: 'GameWon',
+                userName: USER1,
+                name: GAME_NAME,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:09.291Z'
+            }];
+
+            const actualEvents = tttCommandHandler(given).executeCommand(when);
+
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+        });
     });
 })
