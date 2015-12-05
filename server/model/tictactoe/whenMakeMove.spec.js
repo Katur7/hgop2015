@@ -265,5 +265,51 @@ describe('make move command', () => {
 
             JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
         });
+
+        it('in a draw', () => {
+            /*
+            X O X
+            O O X
+            X X O
+            */
+            given.push(constructMoveEvent(5, USER1, 0, 0));
+            given.push(constructMoveEvent(6, USER2, 1, 0));
+            given.push(constructMoveEvent(7, USER1, 2, 0));
+            given.push(constructMoveEvent(8, USER2, 0, 1));
+            given.push(constructMoveEvent(9, USER1, 2, 1));
+            given.push(constructMoveEvent(10, USER2, 1, 1));
+            given.push(constructMoveEvent(11, USER1, 0, 2));
+            given.push(constructMoveEvent(12, USER2, 2, 2));
+
+            when = {
+                id: '130',
+                comm: MAKE_MOVE,
+                userName: USER1,
+                x: 1,
+                y: 2,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:10.291Z'
+            };
+
+            then = [{
+                id: '130',
+                event: 'MoveMade',
+                userName: USER1,
+                name: GAME_NAME,
+                x: 1,
+                y: 2,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:10.291Z'
+            }, {
+                id: '130',
+                event: 'GameDraw',
+                name: GAME_NAME,
+                timeStamp: '2015-12-03T15:13:10.291Z'
+            }];
+
+            const actualEvents = tttCommandHandler(given).executeCommand(when);
+
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+        });
     });
 })
