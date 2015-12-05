@@ -54,14 +54,12 @@ const isGameOver = (cmd) => {
         if(board[0][i] === player &&
             board[1][i] === player &&
             board[2][i] === player) {
-            console.log('Found horizontial line');
             return gameWonEvent;
         }
         // Check the vertical lines
         if(board[i][0] === player &&
             board[i][1] === player &&
             board[i][2] === player) {
-            console.log('Found vertical line');
             return gameWonEvent;
         }
 
@@ -74,14 +72,12 @@ const isGameOver = (cmd) => {
     }
     // Check the diagonal lines
     if(board[0][0] === player &&
-        board[1][1] === player && 
+        board[1][1] === player &&
         board[2][2] === player) {
-        console.log('Found diagonal line');
         return gameWonEvent;
     } else if(board[2][0] === player &&
             board[1][1] === player &&
             board[0][2] === player) {
-        console.log('Found diagonal line');
         return gameWonEvent;
     }
 
