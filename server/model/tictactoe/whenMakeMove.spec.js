@@ -74,7 +74,7 @@ describe('make move command', () => {
                 userName: USER2,
                 x: 1,
                 y: 0,
-                side: 'Y',
+                side: 'O',
                 timeStamp: '2015-12-03T15:13:03.291Z'
             };
 
@@ -85,9 +85,14 @@ describe('make move command', () => {
                 name: GAME_NAME,
                 x: 1,
                 y: 0,
-                side: 'Y',
+                side: 'O',
                 timeStamp: '2015-12-03T15:13:03.291Z'
             }];
+
+            const actualEvents = tttCommandHandler(given).executeCommand(when);
+
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+
         });
 
         it('should forbid making moves in occupied places', () => {
@@ -97,7 +102,7 @@ describe('make move command', () => {
                 userName: USER2,
                 x: 0,
                 y: 0,
-                side: 'Y',
+                side: 'O',
                 timeStamp: '2015-12-03T15:13:03.291Z'
             };
 
@@ -107,6 +112,115 @@ describe('make move command', () => {
                 userName: USER2,
                 timeStamp: '2015-12-03T15:13:03.291Z'
             }];
-        })
-    })
+
+            const actualEvents = tttCommandHandler(given).executeCommand(when);
+
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+
+        });
+    });
+
+    describe('check for winning conditions', () => {
+        const constructMoveEvent = (_id, _user, _x, _y) => {
+            return {
+                id: '12' + _id,
+                event: 'MoveMade',
+                userName: _user,
+                name: GAME_NAME,
+                x: _x,
+                y: _y,
+                side: _user === 'Grimur' ? 'X' : 'O',
+                timeStamp: '2015-12-03T15:13:0' + _id + '.291Z' // Unique timestamps
+            };
+        };
+
+        it('in first row', () => {
+            /*
+            X X -
+            O O -
+            - - -
+            */
+            given.push(constructMoveEvent(5, USER1, 0, 0));
+            given.push(constructMoveEvent(6, USER2, 0, 1));
+            given.push(constructMoveEvent(7, USER1, 1, 0));
+            given.push(constructMoveEvent(8, USER2, 1, 1));
+
+            when = {
+                id: '129',
+                comm: MAKE_MOVE,
+                userName: USER1,
+                x: 2,
+                y: 0,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:09.291Z'
+            };
+
+            then = [{
+                id: '129',
+                event: 'MoveMade',
+                userName: USER1,
+                name: GAME_NAME,
+                x: 2,
+                y: 0,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:09.291Z'
+            }, {
+                id: '129',
+                event: 'GameWon',
+                userName: USER1,
+                name: GAME_NAME,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:09.291Z'
+            }];
+
+            const actualEvents = tttCommandHandler(given).executeCommand(when);
+
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+        });
+
+        it('in second column', () => {
+            /*
+            O X -
+            O X -
+            - - -
+            */
+            given.push(constructMoveEvent(5, USER1, 0, 0));
+            given.push(constructMoveEvent(6, USER2, 0, 1));
+            given.push(constructMoveEvent(7, USER1, 1, 0));
+            given.push(constructMoveEvent(8, USER2, 1, 1));
+
+            when = {
+                id: '129',
+                comm: MAKE_MOVE,
+                userName: USER1,
+                x: 2,
+                y: 0,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:09.291Z'
+            };
+
+            then = [{
+                id: '129',
+                event: 'MoveMade',
+                userName: USER1,
+                name: GAME_NAME,
+                x: 2,
+                y: 0,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:09.291Z'
+            }, {
+                id: '129',
+                event: 'GameWon',
+                userName: USER1,
+                name: GAME_NAME,
+                side: 'X',
+                timeStamp: '2015-12-03T15:13:09.291Z'
+            }];
+
+            const actualEvents = tttCommandHandler(given).executeCommand(when);
+
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+        });
+
+    });
 })
