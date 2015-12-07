@@ -1,4 +1,4 @@
-var _ = require('lodash');
+//var _ = require('lodash');
 var q = require('q');
 
 module.exports = function(eventStore, commandHandler){
