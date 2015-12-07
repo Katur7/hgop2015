@@ -24,6 +24,10 @@ development virtual machine.
 
 [Day 5](./hgop-docs/day5.md)
 
+[Day 6](./hgop-docs/day6.md)
+
+[Day 7](./hgop-docs/day7.md)
+
 ### Project backlog
 
 *	Can update latest version in production by push of a button

@@ -71,7 +71,7 @@ module.exports = function (grunt) {
       },
       mochaTest: {
         files: ['server/**/*.js'],
-        tasks: ['env:test', 'mochaTest']
+        tasks: ['env:test', 'mochaTest:test']
       },
       jsTest: {
         files: [
@@ -130,6 +130,7 @@ module.exports = function (grunt) {
         },
         src: [
           'server/**/*.js',
+          '!server/**/*.acceptance.js',
           '!server/**/*.spec.js'
         ]
       },
@@ -434,12 +435,21 @@ module.exports = function (grunt) {
     },
 
     mochaTest: {
+      test:{
       options: {
-        reporter: 'spec'
+        reporter: process.env.MOCHA_REPORTER || 'spec',
+        captureFile:'server-tests'
       },
       src: ['server/**/*.spec.js']
+      },
+       acceptance: {
+        options: {
+          reporter: process.env.MOCHA_REPORTER || 'spec',
+          captureFile:'acceptance-tests'
+        },
+        src: ['server/**/*.acceptance.js']
+      }
     },
-
     protractor: {
       options: {
         configFile: 'protractor.conf.js'
@@ -601,10 +611,16 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'env:all',
         'env:test',
-        'mochaTest'
+        'mochaTest:test'
       ]);
     }
-
+    else if (target === 'acceptance') {
+      return grunt.task.run([
+        'env:all',
+        'env:test',
+        'mochaTest:acceptance'
+      ]);
+    }
     else if (target === 'client') {
       return grunt.task.run([
         'clean:server',
@@ -659,7 +675,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
-    'test',
+    'test:server',
+    'test:client',
     'build'
   ]);
 };
