@@ -13,7 +13,7 @@ const resetGameState = () => {
 
 const initialize = (events) => {
     resetGameState();
-    for(const e of events) {
+    for(let e of events) {
         switch (e.event) {
             case 'GameCreated':
                 gameState.gameCreatedEvent = e;
