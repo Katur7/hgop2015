@@ -13,6 +13,7 @@ describe('create game command', () => {
         when = {
             id: '123',
             comm: CREATEGAME,
+            gameId: '1',
             userName: USER1,
             name: 'FirstTTT',
             timeStamp: '2015-12-03T15:13:01.291Z'
@@ -20,6 +21,8 @@ describe('create game command', () => {
         then = [{
             id: '123',
             event: 'GameCreated',
+            gameId: '1',
+            name: 'FirstTTT',
             userName: USER1,
             timeStamp: '2015-12-03T15:13:01.291Z'
         }];
@@ -34,6 +37,7 @@ describe('create game command', () => {
         when = {
             id: '1234',
             comm: CREATEGAME,
+            gameId: '2',
             userName: USER2,
             name: 'FirstTTT',
             timeStamp: '2015-12-03T15:13:00.291Z'
@@ -41,6 +45,8 @@ describe('create game command', () => {
         then = [{
             id: '1234',
             event: 'GameCreated',
+            gameId: '2',
+            name: 'FirstTTT',
             userName: USER2,
             timeStamp: '2015-12-03T15:13:00.291Z'
         }];

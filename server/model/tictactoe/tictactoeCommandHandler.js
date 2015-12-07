@@ -102,6 +102,8 @@ const executeCommand = (cmd) => {
             return [{
                 id: cmd.id,
                 event: 'GameCreated',
+                gameId: cmd.gameId,
+                name: cmd.name,
                 userName: cmd.userName,
                 timeStamp: cmd.timeStamp
             }];
