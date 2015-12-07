@@ -5,11 +5,6 @@ rm -rf ./dist
 
 echo Building app
 grunt
-rc=$?; 
-if [[ $rc != 0 ]]; then 
-    exit $rc; 
-fi
-
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "Grunt build failed with exit code " $rc
@@ -31,7 +26,7 @@ docker build -t katur/tictactoe .
 
 rc=$?
 if [[ $rc != 0 ]] ; then
-    echo "Docker build failed " $rc
+    echo "Docker build failed with exit code " $rc
     exit $rc
 fi
 

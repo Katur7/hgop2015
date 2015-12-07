@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-
 var app = require('../../app');
 
 // gameHistory
