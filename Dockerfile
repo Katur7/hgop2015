@@ -2,7 +2,8 @@ FROM    centos:centos6
 
 # Enable EPEL for Node.js
 #RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-RUN      yum install epel-release
+#RUN     rpm -Uvh https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+RUN      yum install -y epel-release
 
 # Install Node.js and npm
 RUN     yum install -y npm
