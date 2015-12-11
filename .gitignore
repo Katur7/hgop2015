@@ -2,8 +2,10 @@ node_modules/
 public
 .tmp
 .idea
+*.log
 client/bower_components
 dist
 /server/config/local.env.js
 server-tests
+acceptance-tests
 TESTS-Firefox*

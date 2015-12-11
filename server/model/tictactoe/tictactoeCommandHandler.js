@@ -99,6 +99,7 @@ const constructError = (cmd, eventMessage) => {
 const executeCommand = (cmd) => {
     switch (cmd.comm) {
         case 'CreateGame':
+            initialize();
             return [{
                 id: cmd.id,
                 event: 'GameCreated',
