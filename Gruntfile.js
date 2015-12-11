@@ -1,4 +1,3 @@
-// Generated on 2014-11-25 using generator-angular-fullstack 2.0.13
 'use strict';
 
 module.exports = function (grunt) {
@@ -648,10 +647,12 @@ module.exports = function (grunt) {
       ]);
     }
 
-    else grunt.task.run([
-      'test:server',
-      'test:client'
-    ]);
+    else {
+         grunt.task.run([
+          'test:server',
+          'test:client'
+        ]);
+    }
   });
 
   grunt.registerTask('build', [

@@ -12,5 +12,6 @@
   "smarttabs": true,
   "asi": true,
   "debug": true,
-  "jasmine": true
+  "jasmine": true,
+  "mocha": true
 }
