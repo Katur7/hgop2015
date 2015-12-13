@@ -54,7 +54,12 @@ function given(_command) {
 function user(_userName) {
     const userApi = {
         command: undefined,
+        users: {},
         createsGame: (_gameName) => {
+            userApi.users[_userName] = {
+                name: _userName,
+                side: 'X'
+            };
             userApi.command = {
                 id : "123",
                 gameId : "1",
@@ -62,10 +67,14 @@ function user(_userName) {
                 userName: _userName,
                 name: _gameName,
                 timeStamp: '2015-12-11T13:12:32.061Z'
-            }
+            };
             return userApi;
         },
         joinsGame: (_gameName) => {
+            userApi.users[_userName] = {
+                name: _userName,
+                side: 'O'
+            };
             userApi.command = {
                 id : "124",
                 gameId : "1",
