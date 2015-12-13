@@ -65,6 +65,17 @@ function user(_userName) {
             }
             return userApi;
         },
+        joinsGame: (_gameName) => {
+            userApi.command = {
+                id : "124",
+                gameId : "1",
+                comm: "JoinGame",
+                userName: _userName,
+                name: _gameName,
+                timeStamp: '2015-12-11T13:12:32.061Z'
+            }
+            return userApi;
+        },
         withId: (_gameId) => {
             userApi.command.gameId = _gameId;
             return userApi;
