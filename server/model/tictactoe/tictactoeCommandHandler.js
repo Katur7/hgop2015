@@ -99,8 +99,8 @@ const constructError = (cmd, eventMessage) => {
 const executeCommand = (cmd) => {
     switch (cmd.comm) {
         case 'CreateGame':
-            initialize();
-            return [{
+            resetGameState();
+            const e = [{
                 id: cmd.id,
                 event: 'GameCreated',
                 gameId: cmd.gameId,
@@ -108,6 +108,8 @@ const executeCommand = (cmd) => {
                 userName: cmd.userName,
                 timeStamp: cmd.timeStamp
             }];
+            gameState.gameCreatedEvent = e[0];
+            return e;
 
         case 'JoinGame':
             if(gameState.gameCreatedEvent === undefined) {
