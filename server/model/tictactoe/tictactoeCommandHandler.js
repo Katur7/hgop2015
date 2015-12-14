@@ -1,7 +1,5 @@
 'use strict';
-const gameState = {
-
-};
+const gameState = {};
 
 const resetGameState = () => {
     gameState.gameCreatedEvent =  undefined;
@@ -100,7 +98,7 @@ const executeCommand = (cmd) => {
     switch (cmd.comm) {
         case 'CreateGame':
             resetGameState();
-            const e = [{
+            let gameCreatedEvent = [{
                 id: cmd.id,
                 event: 'GameCreated',
                 gameId: cmd.gameId,
@@ -108,21 +106,24 @@ const executeCommand = (cmd) => {
                 userName: cmd.userName,
                 timeStamp: cmd.timeStamp
             }];
-            gameState.gameCreatedEvent = e[0];
-            return e;
+            gameState.gameCreatedEvent = gameCreatedEvent[0];
+            return gameCreatedEvent;
 
         case 'JoinGame':
             if(gameState.gameCreatedEvent === undefined) {
                 return constructError(cmd, 'GameDoesNotExist');
             }
 
-            return [{
+            let gameJoinedEvent = [{
                 id: cmd.id,
                 event: 'GameJoined',
+                gameId: cmd.gameId,
                 userName: cmd.userName,
                 otherUserName: gameState.gameCreatedEvent.userName,
                 timeStamp: cmd.timeStamp
             }];
+            gameState.gameJoinedEvent = gameJoinedEvent[0];
+            return gameJoinedEvent;
 
         case 'MakeMove':
             if(gameState.gameCreatedEvent === undefined) {
@@ -137,6 +138,7 @@ const executeCommand = (cmd) => {
             const returnValue = [{
                 id: cmd.id,
                 event: "MoveMade",
+                gameId: cmd.gameId,
                 userName: cmd.userName,
                 name: gameState.gameCreatedEvent.name,
                 x: cmd.x,

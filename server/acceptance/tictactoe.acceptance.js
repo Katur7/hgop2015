@@ -57,8 +57,19 @@ describe('TEST ENV GET /api/gameHistory', function () {
         });
     });
 
-    it('Should execute fluid API test', function (done) {
-        given(user("Grimur").createsGame("TheFirstGame").command)
+    it('should execute fluid API test', (done) => {
+        given(user("Grimur").createsGame("FirstTTT").command)
         .expect('GameCreated').isOk(done);
     });
+
+    it('should place one move', (done) => {
+
+            given(user("Grimur").createsGame("FirstTTT").withId('2').command)
+            .and(user('Katur').joinsGame('FirstTTT').withId('2').command)
+            .and(user('Grimur').makesMove(0, 0).withToken('X').withId('2').command)
+            .expect('MoveMade').withGameId('2').withUser('Grimur').isOk(done);
+
+
+    })
+
 });
