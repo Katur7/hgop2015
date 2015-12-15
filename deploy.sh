@@ -13,6 +13,5 @@ if [ -z $SERVER_IP ] ; then
     SERVER_IP="95.85.44.69"
 fi
 
-
 echo Deploy version $VERSION to $SERVER_IP on port $SERVER_PORT
 ssh root@$SERVER_IP 'bash -s' < run.sh $VERSION $SERVER_PORT
