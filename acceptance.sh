@@ -1,6 +1,6 @@
 #!/bin/bash
 export ACCEPTANCE_URL=http://hgop.grimur.me
-npm install
+npm install grunt
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "NPM install failed with exit code " $rc
