@@ -1,10 +1,10 @@
 var user = require('../fluid-api/fluid').user;
 var given = require('../fluid-api/fluid').given;
 
-it('Should play 100 games in 9 seconds.', function (done) {
+it('Should play 100 games in 10 seconds.', function (done) {
   var doneCount = 0;
   var gamesToPlay = 100;
-  var x = 9;
+  var x = 10;
 
   this.timeout(x * 1000);
 
