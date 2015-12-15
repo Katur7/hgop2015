@@ -63,13 +63,40 @@ describe('TEST ENV GET /api/gameHistory', function () {
     });
 
     it('should place one move', (done) => {
-
-            given(user("Grimur").createsGame("FirstTTT").withId('2').command)
-            .and(user('Katur').joinsGame('FirstTTT').withId('2').command)
-            .and(user('Grimur').makesMove(0, 0).withToken('X').withId('2').command)
-            .expect('MoveMade').withGameId('2').withUser('Grimur').isOk(done);
-
-
+        given(user("Grimur").createsGame("FirstTTT").withId('2').command)
+        .and(user('Katur').joinsGame('FirstTTT').withId('2').command)
+        .and(user('Grimur').makesMove(0, 0).withToken('X').withId('2').command)
+        .expect('MoveMade').withGameId('2').withUser('Grimur').isOk(done);
     })
 
+    it('play until a player wins', (done) => {
+        given(user("Grimur").createsGame("FirstTTT").withId('3').command)
+        .and(user('Katur').joinsGame('FirstTTT').withId('3').command)
+        .and(user('Grimur').makesMove(0, 0).withToken('X').withId('3').command)
+        .and(user('Katur').makesMove(1, 0).withToken('O').withId('3').command)
+        .and(user('Grimur').makesMove(0, 1).withToken('X').withId('3').command)
+        .and(user('Katur').makesMove(2, 0).withToken('O').withId('3').command)
+        .and(user('Grimur').makesMove(0, 2).withToken('X').withId('3').command)
+        .expect('GameWon').withGameId('3').withUser('Grimur').isOk(done);
+    })
+
+    it('play until there is a draw', (done) => {
+        /*
+        X O X
+        O O X
+        X X O
+        */
+        given(user("Grimur").createsGame("FirstTTT").withId('4').command)
+        .and(user('Katur').joinsGame('FirstTTT').withId('4').command)
+        .and(user('Grimur').makesMove(0, 0).withToken('X').withId('4').command)
+        .and(user('Katur').makesMove(1, 0).withToken('O').withId('4').command)
+        .and(user('Grimur').makesMove(2, 0).withToken('X').withId('4').command)
+        .and(user('Katur').makesMove(0, 1).withToken('O').withId('4').command)
+        .and(user('Grimur').makesMove(2, 1).withToken('X').withId('4').command)
+        .and(user('Katur').makesMove(1, 1).withToken('O').withId('4').command)
+        .and(user('Grimur').makesMove(0, 2).withToken('X').withId('4').command)
+        .and(user('Katur').makesMove(2, 2).withToken('O').withId('4').command)
+        .and(user('Grimur').makesMove(1, 2).withToken('X').withId('4').command)
+        .expect('GameDraw').withGameId('4').isOk(done);
+    })
 });

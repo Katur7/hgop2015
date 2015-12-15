@@ -43,6 +43,7 @@ function given(_command) {
         },
         'GameJoined': {
             id: '123',
+            gameId: '1',
             event: 'GameJoined',
             userName: 'Katur',
             otherUserName: 'Grimur',
@@ -50,6 +51,7 @@ function given(_command) {
         },
         'MoveMade': {
             id: '123',
+            gameId: '1',
             event: 'MoveMade',
             userName: 'Grimur',
             name: 'FirstTTT',
@@ -60,12 +62,14 @@ function given(_command) {
         },
         'GameDraw': {
             id: '123',
+            gameId: '1',
             event: 'GameDraw',
             name: 'FirstTTT',
             timeStamp: '2015-12-11T13:12:32.061Z'
         },
         'GameWon': {
             id: '123',
+            gameId: '1',
             event: 'GameWon',
             userName: 'Grimur',
             name: 'FirstTTT',

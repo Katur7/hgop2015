@@ -33,6 +33,7 @@ const isGameOver = (cmd) => {
     const player = cmd.side;
     const gameWonEvent = {
         id: cmd.id,
+        gameId: cmd.gameId,
         event: 'GameWon',
         userName: cmd.userName,
         name: gameState.gameCreatedEvent.name,
@@ -41,6 +42,7 @@ const isGameOver = (cmd) => {
     };
     const gameDrawEvent = {
         id: cmd.id,
+        gameId: cmd.gameId,
         event: 'GameDraw',
         name: gameState.gameCreatedEvent.name,
         timeStamp: cmd.timeStamp
