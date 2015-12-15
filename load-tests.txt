@@ -1,0 +1,13 @@
+[31m>> [39mMocha exploded!
+[31m>> [39mError: Cannot find module '../fluid-api/tictactoeFluid'[31m
+>> [39m    at Function.Module._resolveFilename (module.js:337:15)[31m
+>> [39m    at Function.Module._load (module.js:287:25)[31m
+>> [39m    at Module.require (module.js:366:17)[31m
+>> [39m    at require (module.js:385:17)[31m
+>> [39m    at Object.<anonymous> (/home/grimur/code/hgop/hgop2015/server/capacity/tictactoe.load.js:1:74)[31m
+>> [39m    at Module._compile (module.js:435:26)[31m
+>> [39m    at Object.Module._extensions..js (module.js:442:10)[31m
+>> [39m    at Module.load (module.js:356:32)[31m
+>> [39m    at Function.Module._load (module.js:311:12)[31m
+>> [39m    at Module.require (module.js:366:17)[31m
+>> [39m    at require (module.js:385:17)

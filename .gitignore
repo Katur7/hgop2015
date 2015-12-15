@@ -9,3 +9,4 @@ dist
 server-tests
 acceptance-tests
 TESTS-Firefox*
+/reports

@@ -1,0 +1,14 @@
+
+[0m[0m
+[0m  TEST ENV GET /api/gameHistory[0m
+Here it is!!!!!!!!!!!!!!############ http://localhost:9000
+[2K[0G  [32m  ✓[0m[90m Should have ACCEPTANCE_URL environment variable exported. [0m
+[2K[0G  [32m  ✓[0m[90m should execute same test using old style [0m[31m(87ms)[0m
+[2K[0G  [32m  ✓[0m[90m should execute fluid API test [0m
+[2K[0G  [32m  ✓[0m[90m should place one move [0m[33m(42ms)[0m
+[2K[0G  [32m  ✓[0m[90m play until a player wins [0m[33m(49ms)[0m
+[2K[0G  [32m  ✓[0m[90m play until there is a draw [0m[33m(45ms)[0m
+
+
+[92m [0m[32m 6 passing[0m[90m (272ms)[0m
+
