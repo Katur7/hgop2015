@@ -1,4 +1,5 @@
 #!/bin/bash
+echo Start capacity test
 grunt mochaTest:load
 rc=$?
 if [[ $rc != 0 ]] ; then
