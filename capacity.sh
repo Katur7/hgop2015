@@ -1,5 +1,5 @@
 #!/bin/bash
-export ACCEPTANCE_URL=http://hgop.grimur.me
+export ACCEPTANCE_URL=http://hgop.grimur.me:5000
 npm install grunt
 rc=$?
 if [[ $rc != 0 ]] ; then
