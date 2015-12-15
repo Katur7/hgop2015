@@ -4,7 +4,7 @@ VERSION=$1
 SERVER_PORT=$2
 
 # Pull latest image
-docker pull katur/tictactoe:VERSION
+docker pull katur/tictactoe:$VERSION
 
 # Kill the old container
 echo "Killing old container"
