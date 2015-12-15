@@ -23,6 +23,7 @@ function sendCommands(commands, pos, gameId, resolve, reject) {
     .end((err, res) => {
         if(err) reject(err);
 
+        console.log('Sending command: %s, number: %d', commands[pos], pos);
         if(pos === commands.length - 1) {
             return resolve();
         } else {
