@@ -6,7 +6,8 @@ public
 client/bower_components
 dist
 /server/config/local.env.js
-server-tests
-acceptance-tests
+server-tests*
+acceptance-tests*
+load-tests*
 TESTS-Firefox*
 /reports
