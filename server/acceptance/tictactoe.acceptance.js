@@ -6,12 +6,6 @@ const given     = require('../fluid-api/fluid').given;
 const user      = require('../fluid-api/fluid').user;
 const acceptanceUrl = process.env.ACCEPTANCE_URL;
 
-const counters = {
-    id: 0,
-    gameId: 0,
-    timeStamp: 1449672646
-}
-
 describe('TEST ENV GET /api/gameHistory', function () {
     it('Should have ACCEPTANCE_URL environment variable exported.', function () {
         // Mocha/Should library is weird
@@ -81,7 +75,7 @@ describe('TEST ENV GET /api/gameHistory', function () {
     })
 
     it('play until there is a draw', (done) => {
-        /*
+        /* 
         X O X
         O O X
         X X O
