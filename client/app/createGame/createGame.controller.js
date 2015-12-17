@@ -3,7 +3,7 @@
 angular.module('tictactoeApp')
   .controller('CreateGameCtrl', function ($scope, $http, guid, $location) {
     $scope.createGame = function () {
-      var user = {'userName': $scope.userName, side: 'X'};
+      //var user = {'userName': $scope.userName, side: 'X'};
 
       var id = guid();
       var gameId = guid();
@@ -11,7 +11,7 @@ angular.module('tictactoeApp')
           'id': id,
           'gameId': gameId,
           'comm': 'CreateGame',
-          'user': user,
+          'userName': $scope.userName,
           'name': $scope.name,
           'timeStamp': '2014-12-02T11:29:29'
         }

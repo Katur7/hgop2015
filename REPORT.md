@@ -6,3 +6,8 @@ nodejs: Umhverfi til að búa til server í javascript, byggt á V8 vélinni.
 bower: Pakkakerfi fyrir framenda vefforritun, yfirleitt er samt hægt að nota npm í staðinn.
 
 Load testin er keyrð samtímis (parallel), hins vegar er hvert test keyrt í röð (serial), þ.e. fyrst er sent CreateGame svo JoinGame og svoleiðis áfram.
+
+TODO: Svara
+What does this give us? Who would use the capability to track versions and why? Who would use capability to deploy any version and why?
+What was wrong with having docker push in the deployment script rather than in the dockerbuild.sh script?
+How does the "deploy any version, anywhere" build feature work? Hint: Track GIT_COMMIT

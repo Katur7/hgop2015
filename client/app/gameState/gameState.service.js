@@ -13,22 +13,24 @@ angular.module('tictactoeApp')
         mutate: function (events) {
           var handlers = {
             'GameCreated': function (event, gameState) {
+                console.log('Got game created');
               gameState.created = true;
               gameState.name = event.name;
               gameState.gameId = event.gameId;
-              gameState.creatingUser = event.user;
+              gameState.creatingUser = event.userName;
             },
             'GameJoined': function (event, gameState) {
-              gameState.joiningUser = event.user;
+              gameState.joiningUser = event.userName;
             },
-            'MovePlaced': function (event, gameState) {
-              var x = event.move.xy.x, y = event.move.xy.y;
-              gameState.board[x][y] = event.move.side;
-              gameState.nextTurn = event.move.side === 'X' ? 'O' : 'X';
+            'MoveMade': function (event, gameState) {
+                console.log('Got move placed');
+              var x = event.x, y = event.y;
+              gameState.board[x][y] = event.side;
+              gameState.nextTurn = event.side === 'X' ? 'O' : 'X';
             },
             'GameWon': function (event, gameState) {
               gameState.nextTurn = 'GameOver';
-              gameState.winner = event.user;
+              gameState.winner = event.userName;
             },
             'GameDraw': function (event, gameState) {
               gameState.nextTurn = 'GameOver';

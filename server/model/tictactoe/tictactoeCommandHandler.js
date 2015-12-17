@@ -157,7 +157,9 @@ const executeCommand = (cmd) => {
             return returnValue;
 
         default:
+            console.log('No handler found for event:', cmd);
             return 'No handler found';
+
     }
 }
 

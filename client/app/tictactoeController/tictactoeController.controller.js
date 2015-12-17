@@ -40,22 +40,23 @@ angular.module('tictactoeApp')
     }
 
     $scope.myTurn = function () {
+        //console.log($scope.gameState.nextTurn);
+
       return mySide() === $scope.gameState.nextTurn;
     };
 
-    $scope.placeMove = function (coords) {
+    $scope.placeMove = function (x,y) {
       if(!$scope.myTurn()){
         return;
       }
       thenHandleEvents($http.post('/api/placeMove/', {
           gameId: $scope.gameState.gameId,
-          comm: 'PlaceMove',
-          user: $scope.me,
+          comm: 'MakeMove',
+          userName: $scope.me,
           timeStamp: '2014-12-02T11:29:29',
-          move: {
-            xy: coords,
-            side: mySide()
-          }
+          x: x,
+          y: y,
+          side: mySide()
         }
       ));
     };

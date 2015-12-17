@@ -23,7 +23,7 @@
 
   <div id="gameboard" class="board">
     <div class="ticrow" ng-repeat="row in gameState.board" ng-init="x=$index">
-      <div class="ticcell" ng-class="cell + ' x' + x + 'y' + y" ng-repeat="cell in row track by $index" ng-init="y=$index" ng-click="placeMove([x,y])">
+      <div class="ticcell" ng-class="cell + ' x' + x + 'y' + y" ng-repeat="cell in row track by $index" ng-init="y=$index" ng-click="placeMove(x,y)">
         {{cell}}
       </div>
     </div>
