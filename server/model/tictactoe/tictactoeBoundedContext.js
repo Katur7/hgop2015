@@ -14,7 +14,6 @@ module.exports = function(eventStore, commandHandler){
           defer.reject(e);
         }
 
-console.log('BoundedContext event:', events);
         eventStore.storeEvents(cmd.gameId, events).then(function(){
           defer.resolve(events);
         }, function(err){

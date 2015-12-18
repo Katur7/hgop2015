@@ -40,8 +40,6 @@ angular.module('tictactoeApp')
     }
 
     $scope.myTurn = function () {
-        //console.log($scope.gameState.nextTurn);
-
       return mySide() === $scope.gameState.nextTurn;
     };
 
@@ -50,6 +48,7 @@ angular.module('tictactoeApp')
         return;
       }
       thenHandleEvents($http.post('/api/placeMove/', {
+          id: guid(),
           gameId: $scope.gameState.gameId,
           comm: 'MakeMove',
           userName: $scope.me,

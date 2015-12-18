@@ -23,7 +23,8 @@ const initialize = (events) => {
                 gameState.board[e.x][e.y] = e.side;
                 break;
             default:
-                throw new Error('Event not found');
+                console.log('Error: event not found. Event:', e);
+                break;
         }
     }
 };
