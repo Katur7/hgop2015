@@ -7,7 +7,12 @@ bower: Pakkakerfi fyrir framenda vefforritun, yfirleitt er samt hægt að nota n
 
 Load testin er keyrð samtímis (parallel), hins vegar er hvert test keyrt í röð (serial), þ.e. fyrst er sent CreateGame svo JoinGame og svoleiðis áfram.
 
-TODO: Svara
-What does this give us? Who would use the capability to track versions and why? Who would use capability to deploy any version and why?
-What was wrong with having docker push in the deployment script rather than in the dockerbuild.sh script?
-How does the "deploy any version, anywhere" build feature work? Hint: Track GIT_COMMIT
+-What does this give us? Who would use the capability to track versions and why? Who would use capability to deploy any version and why?
+For example the QA team, if they have to find a bug in an old version.
+It's also good in emergency situations to be able to revert to an older version than is known to work.
+
+-What was wrong with having docker push in the deployment script rather than in the dockerbuild.sh script?
+Because we want to finish building and packaging our app in the commit stage, than way we only promote "binaries".
+
+-How does the "deploy any version, anywhere" build feature work? Hint: Track GIT_COMMIT
+We tag each packaged "binary" (Dockerfile) with the git commit hash. That way we can deploy any version that has been built.
