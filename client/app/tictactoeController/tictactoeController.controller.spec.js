@@ -114,7 +114,7 @@ describe('Controller: TictactoeControllerCtrl', function () {
       side: 'O'
     }).respond([
       {
-        event: 'MoveMa',
+        event: 'MoveMade',
         userName: 'Gummi',
         timeStamp: '2014-12-02T11:29:29',
         x: 2,
