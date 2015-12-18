@@ -69,7 +69,7 @@ describe('Controller: TictactoeControllerCtrl', function () {
     getHistory();
     httpBackend.expectPOST('/api/placeMove/', {
       gameId: '87687',
-      comm: 'PlaceMove',
+      comm: 'MakeMove',
       userName: 'Gummi',
       timeStamp: '2014-12-02T11:29:29',
       x: 2,
@@ -77,7 +77,7 @@ describe('Controller: TictactoeControllerCtrl', function () {
       side: 'X'
     }).respond([
       {
-        event: 'MovePlaced',
+        event: 'MoveMade',
         userName: 'Gummi',
         timeStamp: '2014-12-02T11:29:29',
         x: 2,
@@ -106,7 +106,7 @@ describe('Controller: TictactoeControllerCtrl', function () {
     getHistory();
     httpBackend.expectPOST('/api/placeMove/', {
       gameId: '87687',
-      comm: 'PlaceMove',
+      comm: 'MakeMove',
       userName: 'Gummi',
       timeStamp: '2014-12-02T11:29:29',
       x: 2,
@@ -114,7 +114,7 @@ describe('Controller: TictactoeControllerCtrl', function () {
       side: 'O'
     }).respond([
       {
-        event: 'MovePlaced',
+        event: 'MoveMa',
         userName: 'Gummi',
         timeStamp: '2014-12-02T11:29:29',
         x: 2,

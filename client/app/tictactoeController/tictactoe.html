@@ -2,6 +2,7 @@
 
   <h3>Game on - {{gameState.name || 'NoName'}} </h3>
 
+  <!-- -->
   <span>{{ gameState | json}}</span>
 
   <div ng-hide="gameState.joiningUser">
@@ -9,12 +10,12 @@
   </div>
 
   <div ng-hide="gameState.winner || gameState.gameDraw">
-    <div  ng-class="{myturn:myTurn()}">Me: <span id="myname">{{ me.userName }}</span> - {{ me.side }}</div>
-    <div  ng-class="{notmyturn:!myTurn()}">Opponent: <span id="opponentname">{{ other.userName }}</span> - {{ other.side }}</div>
+    <div  ng-class="{myturn:myTurn()}">Me: <span id="myname">{{ me }}</span> - {{ me.side }}</div>
+    <div  ng-class="{notmyturn:!myTurn()}">Opponent: <span id="opponentname">{{ other }}</span> - {{ other.side }}</div>
   </div>
 
   <div ng-class="{'winner':gameState.winner}" ng-show="gameState.winner">
-     {{ gameState.winner.userName }} - {{ gameState.winner.side }} WINS!
+     {{ gameState.winner }} WINS!
   </div>
 
   <div class="draw" ng-show="gameState.gameDraw">

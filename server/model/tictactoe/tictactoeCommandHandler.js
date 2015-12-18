@@ -90,6 +90,7 @@ const isGameOver = (cmd) => {
 const constructError = (cmd, eventMessage) => {
     return [{
         id: cmd.id,
+        gameId: cmd.gameId,
         event: eventMessage,
         userName: cmd.userName,
         timeStamp: cmd.timeStamp
