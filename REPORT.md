@@ -16,3 +16,20 @@ Because we want to finish building and packaging our app in the commit stage, th
 
 -How does the "deploy any version, anywhere" build feature work? Hint: Track GIT_COMMIT
 We tag each packaged "binary" (Dockerfile) with the git commit hash. That way we can deploy any version that has been built.
+
+
+Jenkins:
+Commit stage
+./dockerbuild.sh
+
+Deploy/Acceptance stage
+export GIT_UPSTREAM_HASH=`cat dist/githash.txt`
+./deploy.sh $GIT_UPSTREAM_HASH
+./acceptance.sh
+
+Capacity stage
+./capacity.sh
+
+Production stage
+export GIT_UPSTREAM_HASH=`cat dist/githash.txt`
+./deploy.sh $GIT_UPSTREAM_HASH 80
